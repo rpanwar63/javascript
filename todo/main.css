@@ -4,6 +4,8 @@ body {
   margin: 0;
   min-height: 100vh;
   max-height: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   background: -webkit-gradient(linear, left top, right top, from(#654ea3), to(#eaafc8));
   background: linear-gradient(to right, #654ea3, #eaafc8);
   background-size: cover;
@@ -13,6 +15,33 @@ body {
 body #bg {
   width: 50%;
   margin: auto;
+}
+
+@media screen and (max-width: 1024px) {
+  body #bg {
+    width: 100%;
+  }
+}
+
+body .toast {
+  position: absolute;
+  background: #fff;
+  border-radius: 25px;
+  padding: 10px;
+  width: 20%;
+  bottom: 60px;
+  left: 40%;
+  opacity: 0;
+  -webkit-transition: opacity 1.5s;
+  transition: opacity 1.5s;
+  text-align: center;
+}
+
+@media screen and (max-width: 1024px) {
+  body .toast {
+    width: 40%;
+    left: 30%;
+  }
 }
 
 header {
@@ -27,42 +56,100 @@ header #logo {
   color: #fff;
 }
 
-header #delete {
-  padding-left: 55%;
+@media screen and (max-width: 1024px) {
+  header #logo {
+    font-size: 1.5em;
+  }
+}
+
+header #delete, header #savebtn {
   font-size: 1.5em;
-  display: inline-block;
   color: #fff;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  float: right;
+  padding: 25px 25px 0 0;
+}
+
+header #savebtn:hover {
+  color: #FF0000;
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
+}
+
+header #delete:hover {
+  color: #9000D3;
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
 }
 
 main {
   width: 100%;
-  margin: auto;
   margin-top: 50px;
 }
 
-main #input {
+main div {
+  position: relative;
   width: 90%;
+  margin: auto;
+}
+
+main div #input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 96.2%;
   border: none;
-  height: 30px;
+  padding: 12px 0 12px 20px;
   border-radius: 25px;
-  padding-left: 20px;
   font-size: 1.2em;
 }
 
-main a {
-  padding: 3px 6px 3px 6px;
-  background: white;
+main div #input:focus {
+  outline: 0;
+}
+
+main div a {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  padding: 10px 15px 10px 0;
   color: #523249;
   text-align: center;
-  font-size: 1.2em;
+  font-size: 1.5em;
   cursor: pointer;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  border-radius: 47%;
+}
+
+main div a:hover {
+  -webkit-animation: animate 1s infinite;
+          animation: animate 1s infinite;
+}
+
+@-webkit-keyframes animate {
+  0%, 100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
+  }
+}
+
+@keyframes animate {
+  0%, 100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
+  }
 }
 
 main ul {
-  margin: 0;
+  margin-top: 40px;
   padding: 0;
 }
 
@@ -72,9 +159,21 @@ main ul li {
   padding: 12px 8px 12px 60px;
   list-style-type: none;
   background: #A9749A;
-  font-size: 18px;
+  font-size: 1.2em;
   -webkit-transition: 0.2s;
   transition: 0.2s;
+}
+
+main ul li .close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 1.2em;
+  padding: 13px 16px 12px 16px;
+}
+
+main ul li .close:hover {
+  background: #D32020;
 }
 
 main ul li:nth-child(odd) {
@@ -86,9 +185,13 @@ main ul li:hover {
 }
 
 main ul li.checked {
-  background: #4E1E4D;
+  background: #523249;
   color: #fff;
   text-decoration: line-through;
+}
+
+main ul li.checked:hover {
+  background: #523249;
 }
 
 main ul li.checked::before {
@@ -103,12 +206,5 @@ main ul li.checked::before {
           transform: rotate(45deg);
   height: 15px;
   width: 7px;
-}
-
-.close {
-  position: absolute;
-  right: 0;
-  top: 0;
-  padding: 12px 16px 12px 16px;
 }
 /*# sourceMappingURL=main.css.map */

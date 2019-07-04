@@ -8,24 +8,24 @@
     <link rel="stylesheet" href="main.css">
     <title>ToDo Manager</title>
 </head>
-<body>
+<body onload="addCurrentItems()">
     <div id="bg">
     <header>
         <a href="#" id="logo">ToDo Manager</a>
-        <a id="delete" onclick="closeAll()"><i class="fas fa-trash-alt"></i></a>
+        <a id="savebtn" onclick="saveAll()" title="Save"><i class="fas fa-heart"></i></a>
+        <a id="delete" onclick="closeAll()" title="Delete all checked"><i class="fas fa-trash-alt"></i></a>
     </header>
-    <main>
-        <input type="text" id="input" placeholder="Add a ToDo">
-        <a id="addnew" onclick="newElement()"><i class="fas fa-plus"></i></a><br/><br/>
+    <main> 
+        <div>
+            <input type="text" id="input" placeholder="Add a ToDo">
+            <a id="addnew" onclick="newElement()"><i class="fas fa-plus"></i></a><br/><br/>
+        </div>
         <ul id="item-list">
-                <li>code</li>
-                <li>code a little more</li>
-                <li>ok, a lot more</li>
-                <li>yeah, u r gettin there</li>
-                <li>dont lose hope</li>
+            
         </ul>
     </main>
     </div>
+    <div class="toast" id="toast">Current List Saved! </div>
     <script src="main.js"></script>
 </body>
 </html>
