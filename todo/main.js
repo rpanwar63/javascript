@@ -19,12 +19,13 @@ for (i = 0; i < close.length; i++) {
 
 // remove all checked items
 function closeAll() {
-  var items = document.getElementsByTagName("li");
-  for (i = 0; i < items.length; i++) {
-    if(items[i].className === "checked") {
-        items[i].parentElement.removeChild(items[i]);
-      }
+  var i=0;
+  var li = document.getElementsByTagName("LI");
+  for (i = li.length-1; i >= 0; i--) {
+    if(li[i].className === "checked"){
+      li[i].parentElement.removeChild(li[i]);
     }
+  }
 }
 
 // save to local storage
@@ -34,6 +35,7 @@ function saveAll() {
   var items = document.getElementsByTagName("li");
   for (i = 0; i < items.length; i++) {
     localStorage.setItem("item"+i, items[i].textContent);
+    localStorage.setItem("itemClass"+i, items[i].classList);
     count++;
   }
   localStorage.setItem('count', count);
@@ -48,6 +50,14 @@ list.addEventListener('click', function(ev) {
     ev.target.classList.toggle('checked');
   }
 }, false);
+
+//check for enter key on input
+function checkEnter(e) {
+  var key=e.keyCode || e.which;
+  if(key == 13) {
+      newElement();
+  }
+}
 
 // add item
 function newElement() {
@@ -87,6 +97,11 @@ function addCurrentItems() {
     var li = document.createElement("li");
     var t = document.createTextNode(txt);
     li.appendChild(t);
+
+    var checked = localStorage.getItem('itemClass'+i);
+    if (checked === "checked") {
+      li.className = "checked";
+    }
     document.getElementById("item-list").appendChild(li);
     
     var span = document.createElement("span");

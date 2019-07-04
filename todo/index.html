@@ -17,7 +17,7 @@
     </header>
     <main> 
         <div>
-            <input type="text" id="input" placeholder="Add a ToDo">
+            <input type="text" id="input" onkeyup="checkEnter(event)" placeholder="Add a ToDo">
             <a id="addnew" onclick="newElement()"><i class="fas fa-plus"></i></a><br/><br/>
         </div>
         <ul id="item-list">
@@ -25,7 +25,7 @@
         </ul>
     </main>
     </div>
-    <div class="toast" id="toast">Current List Saved! </div>
+    <div class="toast" id="toast">Current List Saved!</div>
     <script src="main.js"></script>
 </body>
 </html>
